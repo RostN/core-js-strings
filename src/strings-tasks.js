@@ -40,8 +40,8 @@ function getStringLength(str) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  // throw new Error('Not implemented');
+function isString(str) {
+  return typeof str === 'string' || str instanceof String;
 }
 
 /**
@@ -56,8 +56,8 @@ function isString(/* value */) {
  *   concatenateStrings('aa', '') => 'aa'.
  *   concatenateStrings('', 'bb') => 'bb'
  */
-function concatenateStrings(/* value1, value2 */) {
-  // throw new Error('Not implemented');
+function concatenateStrings(str1, str2) {
+  return str1 + str2;
 }
 
 /**
