@@ -20,10 +20,10 @@
  *   getStringLength(undefined) => 0
  */
 function getStringLength(str) {
-  number = str.length;
-  console.log(number);
-  return number;
-  // throw new Error('Not implemented');
+  if (str === null || str === undefined) {
+    return 0;
+  }
+  return str.length;
 }
 
 /**
