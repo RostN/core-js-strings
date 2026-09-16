@@ -153,7 +153,11 @@ function repeatString(str, count) {
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
 function removeFirstOccurrences(str, value) {
-  return str.replace(value, '');
+  const index = str.indexOf(value);
+  if (index === -1) {
+    return str;
+  }
+  return str.slice(0, index) + str.slice(index + value.length);
 }
 
 /**
@@ -207,7 +211,7 @@ function sumOfCodes(str) {
  *   startsWith('Hello World', 'Hello') => true
  */
 function startsWith(str, substr) {
-  return str.indexOf(substr) === 0;
+  return str.startsWith(substr);
 }
 
 /**
@@ -377,13 +381,11 @@ function reverseWords(str) {
 function invertCase(str) {
   let result = '';
   for (let i = 0; i < str.length; i += 1) {
-    const code = str.charCodeAt(i);
-    if (code >= 65 && code <= 90) {
-      result += String.fromCharCode(code + 32);
-    } else if (code >= 97 && code <= 122) {
-      result += String.fromCharCode(code - 32);
+    const char = str[i];
+    if (char === char.toUpperCase()) {
+      result = result.concat(char.toLowerCase());
     } else {
-      result += str[i];
+      result = result.concat(char.toUpperCase());
     }
   }
   return result;
