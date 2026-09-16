@@ -473,13 +473,20 @@ function extractEmails(str) {
  *
  */
 function encodeToRot13(str) {
-  return str.replace(/[a-zA-Z]/g, function (char) {
+  let result = '';
+  for (let i = 0; i < str.length; i += 1) {
+    const char = str[i];
     const code = char.charCodeAt(0);
+
     if (code >= 65 && code <= 90) {
-      return String.fromCharCode(((code - 65 + 13) % 26) + 65);
+      result = result.concat(String.fromCharCode(((code - 65 + 13) % 26) + 65));
+    } else if (code >= 97 && code <= 122) {
+      result = result.concat(String.fromCharCode(((code - 97 + 13) % 26) + 97));
+    } else {
+      result = result.concat(char);
     }
-    return String.fromCharCode(((code - 97 + 13) % 26) + 97);
-  });
+  }
+  return result;
 }
 
 /**
